@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = '/api/auth';
+const API_URL = `${import.meta.env.VITE_API_URL}/api/auth`;
 
 export const AuthContext = createContext();
 
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
         throw new Error('Connection timed out. Please check if the server is running.');
       }
       if (!error.response) {
-        throw new Error('Cannot connect to server. Please make sure the backend is running on port 5000.');
+        throw new Error('Cannot connect to server. Please check your internet or if the backend is live.');
       }
       throw error;
     }
@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
         throw new Error('Connection timed out. Please check if the server is running.');
       }
       if (!error.response) {
-        throw new Error('Cannot connect to server. Please make sure the backend is running on port 5000.');
+        throw new Error('Cannot connect to server. Please check your internet or if the backend is live.');
       }
       throw error;
     }
